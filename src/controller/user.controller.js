@@ -58,11 +58,11 @@ const updateUserController = async (req, res) => {
 const removeUserController = async (req, res) => {
   try {
     const deleteUser = await userService.removeUserService(req.params.id);
-    if (deleteUser.deletedCount > 0) {
-      return res.status(200).send({ message: `User deleted sucessfully!` });
-    } else {
-      return res.status(404).send({ message: `User not founs, try again!` });
-    }
+    return res.status(200).send({ message: `User deleted sucessfully!` });
+    // if (deleteUser.deletedCount > 0) {
+    // } else {
+    //   return res.status(404).send({ message: `User not found, try again!` });
+    // }
   } catch (err) {
     console.log('err: ', err);
     return res.status(500).send({ message: `Unexpected err, try again!` });

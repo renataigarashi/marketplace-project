@@ -11,19 +11,21 @@ const userSchema = new mongoose.Schema({
       number: { type: Number, required: true },
       complement: { type: String },
       zip: { type: String, required: true },
-      createdAt: { type: Date, required: true }
+      createdAt: { type: Date, required: true, default: Date.now() }
     }
   ],
-  createdAt: { type: Date, required: true },
-  favorite_prod: {
-    _id: {
-      type: mongoose.Schema.Types.ObjectId,
-      required: true,
-      unique: true,
-      ref: 'products'
-    },
-    createdAt: { type: Date, required: true }
-  },
+  createdAt: { type: Date, required: true, default: Date.now() },
+  favorite_prod: [
+    {
+      _id: {
+        type: mongoose.Schema.Types.ObjectId,
+        required: true,
+        unique: true,
+        ref: 'products'
+      },
+      createdAt: { type: Date, required: true, default: Date.now() }
+    }
+  ],
   isAdmin: { type: Boolean, required: true, default: false }
 });
 
